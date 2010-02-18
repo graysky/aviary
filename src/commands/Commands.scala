@@ -11,8 +11,8 @@ class MuteCommand extends Command {
   override def execute(parsedCommand: ParsedCommand, user: User) = {
 
     val until = parsedCommand.timeframe match {
-      case t: TimeFrame => t.milliseconds
       case None => java.lang.Long.MAX_VALUE
+      case Some(t) => t.milliseconds
     }
 
     if (parsedCommand.usernames.isEmpty) {
