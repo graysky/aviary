@@ -9,27 +9,23 @@ trait Command {
 
 class MuteCommand extends Command {
   override def execute(parsedCommand: ParsedCommand, user: User) = {
-    /*
+
     val until = parsedCommand.timeframe match {
-      case l: Long => l
-      case None => null
+      case t: TimeFrame => t.milliseconds
+      case None => java.lang.Long.MAX_VALUE
     }
 
     if (parsedCommand.usernames.isEmpty) {
       // Global mutes
-      
-    }
-    else {
-      
-    }
-
-    for (name <- parsedCommand.usernames) {
-      // These are wildcard mutes
       for (term <- parsedCommand.terms) {
-        user.addMute("*")
+        user.addMute(null, term, until)
       }
     }
-    */
-    
+    else {
+      // Mute specific users
+      for (username <- parsedCommand.usernames) {
+
+      }
+    }
   }
 }
